@@ -1,0 +1,7 @@
+{
+  "name": "Hylea Platform UX Canvas",
+  "description": "A high-fidelity recreation of the Hylea Platform for UX experimentation and client feedback visualization, featuring interactive maps, complex data tables, and dynamic charting.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
