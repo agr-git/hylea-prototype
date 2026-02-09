@@ -1,21 +1,14 @@
 
 import React, { useState } from 'react';
-import InfoTooltip from '../components/InfoTooltip';
 
 interface Project {
   id: string;
   name: string;
+  icon: string;
   institution: string;
   budget: string;
+  beneficiaries: string;
   status: string;
-  impacts: Array<{
-    pillar: string;
-    val: string;
-    icon: string;
-    color: string;
-  }>;
-  progress: number;
-  lastUpdate: string;
   period: string;
   partners: string[];
   description: string;
@@ -35,16 +28,12 @@ interface Project {
 const projectsData: Project[] = [
   {
     id: 'PJ-001',
-    name: 'Restauración Cuenca Alta Hylea',
+    name: 'Agroforestería Sostenible',
+    icon: '🌳',
     institution: 'Fondo Amazonía',
-    budget: '$450,000',
+    budget: '$450,000 USD',
+    beneficiaries: '320 productores',
     status: 'Activo',
-    impacts: [
-      { pillar: 'Reforestación', val: '+120 Ha', icon: '🌲', color: 'bg-green-100 text-green-700' },
-      { pillar: 'Biodiversidad', val: '+15 especies', icon: '🦜', color: 'bg-blue-100 text-blue-700' },
-    ],
-    progress: 65,
-    lastUpdate: 'hace 2 días',
     period: '2024 - 2026',
     partners: ['IDH', 'Conservación Internacional', 'USAID'],
     description: 'Implementación de sistemas agroforestales con café y cacao en 8 municipios del corredor Andino-Amazónico.',
@@ -85,16 +74,12 @@ const projectsData: Project[] = [
   },
   {
     id: 'PJ-002',
-    name: 'Café Circular Acevedo',
+    name: 'Cafés Especiales de Origen',
+    icon: '☕',
     institution: 'Gobernación Huila',
-    budget: '$180,000',
+    budget: '$280,000 USD',
+    beneficiaries: '180 productores',
     status: 'Activo',
-    impacts: [
-      { pillar: 'Ingreso Productor', val: '+22%', icon: '☕', color: 'bg-amber-100 text-amber-700' },
-      { pillar: 'Suelos', val: 'Recuperado', icon: '🌱', color: 'bg-teal-100 text-teal-700' },
-    ],
-    progress: 32,
-    lastUpdate: 'hace 1 semana',
     period: '2023 - 2025',
     partners: ['FNC', 'USAID', 'TechnoServe'],
     description: 'Fortalecimiento de cadenas de valor de cafés especiales con certificación de origen y comercio justo.',
@@ -127,6 +112,91 @@ const projectsData: Project[] = [
       { label: '# Kg Café Especial', value: '45,000', unit: 'kg/año' },
       { label: '# Fincas Certificadas', value: '120', unit: 'fincas' },
       { label: '# Ha en Producción', value: '280', unit: 'hectáreas' }
+    ]
+  },
+  {
+    id: 'PJ-003',
+    name: 'Cacao Amazónico Premium',
+    icon: '🍫',
+    institution: 'IDH Solidaridad',
+    budget: '$380,000 USD',
+    beneficiaries: '245 productores',
+    status: 'Activo',
+    period: '2024 - 2027',
+    partners: ['IDH', 'Solidaridad', 'Luker Chocolate'],
+    description: 'Producción de cacao fino de aroma con prácticas regenerativas y acceso a mercados internacionales.',
+    activities: [
+      'Capacitación en manejo de cacao fino',
+      'Implementación de prácticas regenerativas',
+      'Certificación orgánica y fair trade',
+      'Desarrollo de canales de comercialización',
+      'Fortalecimiento asociativo',
+      'Mejoramiento genético del cultivo'
+    ],
+    objectives: {
+      general: 'Desarrollar una cadena de valor sostenible de cacao fino de aroma que garantice ingresos dignos a productores mientras conserva la biodiversidad amazónica.',
+      specific: [
+        'Producir 200 toneladas de cacao certificado anualmente',
+        'Incrementar ingresos de productores en 35%',
+        'Establecer alianzas con chocolateros premium europeos',
+        'Restaurar 150 hectáreas con sistemas agroforestales'
+      ]
+    },
+    municipalities: [
+      'San Vicente del Caguán',
+      'Belén de los Andaquíes',
+      'Florencia',
+      'La Montañita'
+    ],
+    metrics: [
+      { label: '# Productores', value: '245', unit: 'beneficiarios' },
+      { label: '# Mujeres Productoras', value: '98', unit: 'del proyecto' },
+      { label: '# Toneladas Cacao', value: '200', unit: 'ton/año' },
+      { label: '# Ha Certificadas', value: '180', unit: 'hectáreas' },
+      { label: '# Ha Agroforestales', value: '150', unit: 'hectáreas' }
+    ]
+  },
+  {
+    id: 'PJ-004',
+    name: 'Conservación de Cuencas',
+    icon: '💧',
+    institution: 'Conservación Internacional',
+    budget: '$520,000 USD',
+    beneficiaries: '450 productores',
+    status: 'Activo',
+    period: '2023 - 2026',
+    partners: ['CI', 'Patrimonio Natural', 'GEF'],
+    description: 'Protección y restauración de cuencas hídricas con sistemas productivos sostenibles.',
+    activities: [
+      'Restauración de rondas hídricas',
+      'Implementación de PSA (Pago por Servicios Ambientales)',
+      'Sistemas silvopastoriles',
+      'Monitoreo de calidad del agua',
+      'Fortalecimiento de gobernanza del agua',
+      'Educación ambiental comunitaria'
+    ],
+    objectives: {
+      general: 'Garantizar la provisión de agua limpia para comunidades rurales y urbanas mediante la restauración y conservación de cuencas hídricas estratégicas.',
+      specific: [
+        'Restaurar 450 hectáreas de zonas de recarga hídrica',
+        'Implementar esquemas PSA con 450 familias',
+        'Mejorar índices de calidad del agua en 40%',
+        'Establecer 3 comités de cuenca funcionales'
+      ]
+    },
+    municipalities: [
+      'Pitalito',
+      'San Agustín',
+      'Isnos',
+      'Saladoblanco',
+      'Palestina'
+    ],
+    metrics: [
+      { label: '# Familias Beneficiadas', value: '450', unit: 'familias' },
+      { label: '# Mujeres Líderes', value: '180', unit: 'del proyecto' },
+      { label: '# Ha Restauradas', value: '450', unit: 'hectáreas' },
+      { label: '# Nacimientos Protegidos', value: '85', unit: 'nacimientos' },
+      { label: '# Comités de Cuenca', value: '3', unit: 'activos' }
     ]
   }
 ];
@@ -330,7 +400,7 @@ const ProjectsImpact: React.FC = () => {
     );
   }
 
-  // Vista Lista de Proyectos (Original)
+  // Vista Lista de Proyectos - GRID SIMPLE
   return (
     <div className="p-8 max-w-7xl mx-auto space-y-10">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -355,76 +425,30 @@ const ProjectsImpact: React.FC = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-6">
-        {projectsData.map((p, idx) => (
+      {/* Grid de Proyectos - Diseño Simple */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {projectsData.map((project) => (
           <div
-            key={idx}
-            className="bg-white rounded-[40px] border border-gray-100 shadow-sm hover:shadow-xl transition-all p-8 flex flex-col xl:flex-row gap-10 group overflow-hidden relative cursor-pointer"
-            onClick={() => showDetail(p)}
+            key={project.id}
+            onClick={() => showDetail(project)}
+            className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all cursor-pointer"
           >
-            <div className="absolute top-0 left-0 w-2 h-full bg-teal-600"></div>
-
-            {/* Project Identity */}
-            <div className="xl:w-1/3 space-y-4">
-              <div className="flex items-center space-x-2">
-                <span className="text-[10px] font-black text-teal-600 bg-teal-50 px-2 py-1 rounded tracking-widest">{p.id}</span>
-                <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Actualizado {p.lastUpdate}</span>
-              </div>
-              <h3 className="text-2xl font-black text-gray-900 leading-tight group-hover:text-teal-600 transition-colors">{p.name}</h3>
-              <p className="text-sm font-bold text-gray-500">{p.institution}</p>
-              <div className="pt-4 flex items-center space-x-6">
-                 <div>
-                   <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Presupuesto</p>
-                   <p className="text-lg font-black text-gray-900">{p.budget}</p>
-                 </div>
-                 <div className="w-px h-8 bg-gray-100"></div>
-                 <div>
-                   <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Estado</p>
-                   <p className="text-xs font-black text-teal-600 uppercase bg-teal-50 px-3 py-1 rounded-full">{p.status}</p>
-                 </div>
-              </div>
+            <div className="h-48 bg-gradient-to-br from-teal-600 to-teal-500 flex items-center justify-center text-6xl text-white">
+              {project.icon}
             </div>
-
-            {/* Impact Contributions - EXPLICITLY SHOWING PILLARS */}
-            <div className="xl:w-1/3 space-y-4">
-              <h4 className="text-xs font-black text-gray-900 uppercase tracking-widest flex items-center">
-                Contribución a Indicadores
-                <InfoTooltip description="Muestra cómo este proyecto específico aporta numéricamente a los indicadores globales del Pacto." source="Reportes Técnicos 2025" />
-              </h4>
-              <div className="grid grid-cols-2 gap-3">
-                {p.impacts.map((imp, i) => (
-                  <div key={i} className={`p-4 rounded-[24px] ${imp.color} flex flex-col items-center text-center space-y-1 border border-white/50`}>
-                    <span className="text-2xl">{imp.icon}</span>
-                    <p className="text-xs font-black uppercase tracking-tighter opacity-80">{imp.pillar}</p>
-                    <p className="text-xl font-black">{imp.val}</p>
-                  </div>
-                ))}
+            <div className="p-6">
+              <h3 className="text-xl font-semibold text-gray-800 mb-3">{project.name}</h3>
+              <div className="flex gap-4 mb-4 text-sm text-gray-600">
+                <div className="flex items-center gap-1">
+                  <span>💰</span>
+                  <span>{project.budget.split(' ')[0]}</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <span>👥</span>
+                  <span>{project.beneficiaries.split(' ')[0]}</span>
+                </div>
               </div>
-            </div>
-
-            {/* Progress & Actions */}
-            <div className="xl:w-1/3 flex flex-col justify-center space-y-6">
-               <div className="space-y-2">
-                 <div className="flex justify-between text-xs font-black text-gray-800 uppercase tracking-widest">
-                   <span>Progreso Ejecución</span>
-                   <span>{p.progress}%</span>
-                 </div>
-                 <div className="w-full h-3 bg-gray-100 rounded-full overflow-hidden p-1">
-                   <div className="h-full bg-teal-600 rounded-full" style={{ width: `${p.progress}%` }}></div>
-                 </div>
-               </div>
-               <div className="flex space-x-3">
-                 <button
-                   className="flex-1 py-4 bg-gray-50 text-gray-900 font-black text-xs uppercase tracking-widest rounded-2xl border border-gray-100 hover:bg-gray-100 transition-all"
-                   onClick={(e) => {
-                     e.stopPropagation();
-                     showDetail(p);
-                   }}
-                 >
-                   Ver Ficha Técnica
-                 </button>
-                 <button className="flex-1 py-4 bg-teal-600 text-white font-black text-xs uppercase tracking-widest rounded-2xl shadow-lg shadow-teal-600/10 hover:bg-teal-700 transition-all">Reporte Impacto</button>
-               </div>
+              <p className="text-gray-600 text-sm leading-relaxed">{project.description}</p>
             </div>
           </div>
         ))}
